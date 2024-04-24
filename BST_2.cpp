@@ -90,7 +90,34 @@ void inOrderTraversal(Node* root){  // LNR
 
 }
 
-void preOrderTraversal(Node * root)
+void preOrderTraversal(Node* root){  // NLR 
+    if(root == NULL){
+        return;
+    }
+
+    //N
+    cout << root->data << " ";
+    //L
+    preOrderTraversal(root->left);
+    //R
+    preOrderTraversal(root->right);
+}
+
+void postOrderTraversal(Node* root){ //LRN
+    if(root ==NULL){
+        return;
+    }
+
+    //L
+    postOrderTraversal(root->left);
+    //R
+    postOrderTraversal(root->right);
+    //N
+    cout << root->data << " ";
+
+
+
+}
 
 
 
