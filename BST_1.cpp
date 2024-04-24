@@ -198,6 +198,7 @@ Node *deleteNodeInBST(Node *root, int target)
         else if (root->left != NULL && root->right == NULL)
         {
             Node *child = root->left;
+            delete root;
             return child;
         }
         // Case 4 : Both child exists
@@ -252,6 +253,8 @@ int main(){
 
 
 /*
+                                      IMPORTANT POINTS
+
 In Binary search the very first requirement is that the data should be in monotonic function which means it should be in increasing order. We would be given a specific target to find in the array. First of all we find the mid element based on the index and if the mid element is greater than the target we search for the target in left of the mid eleemnt And if the target is greater than the mid element then we find for the target in the right of mid element. Hence we are breaking the array in every iteration based on the mid element hence the time complexity will be O(log n)
 
 
@@ -286,15 +289,13 @@ We will Solve One case, Baaki Recursion Sambhaal Lega
 8.) Path Sum in BST
 9.) New Questions of Linked Lists are being added....
 10.) How to build a tree if the sequence of inorder, preorder, postorder, levelorder traversals are mentioned
-
-
-
-
 In order to do all questions of trees efficiently we are supposed to knoe the following things:
 1.) You should know all possible traversals on Tree 
 2.) How Recursive Calls go to handle the cases
 3.) Kisi ek value ko recursion ka use krke oopar se neeche bhejna hai, you should know this 
-3.) Kisi ek value ko recursion ka use krke neeche se oopar bhejna hai, you should know this 
+4.) Kisi ek value ko recursion ka use krke neeche se oopar bhejna hai, you should know this 
+5.) kisi 2 solutions ke adhaar par, oopar ek nayaanswer behjna hai (through recursion) , ki left ye hai right ye hai so I have to send this 
+6.) Are you able to keep track of the path of recursion
 */
 
 
