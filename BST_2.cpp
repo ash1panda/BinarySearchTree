@@ -114,11 +114,24 @@ void postOrderTraversal(Node* root){ //LRN
     postOrderTraversal(root->right);
     //N
     cout << root->data << " ";
-
-
-
 }
 
+bool searchNode(Node* root, int target){
+    if(root == NULL){
+        return false;
+    }
+
+    if(root->data == target){
+        return true;
+    }
+
+    if(root->data > target){
+        return searchNode(root->left, target);
+    }
+    else{
+        return searchNode(root->right, target);
+    }
+}
 
 
 int main(){
