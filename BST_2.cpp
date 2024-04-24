@@ -133,6 +133,27 @@ bool searchNode(Node* root, int target){
     }
 }
 
+int findMaxi(Node* root){
+    Node* temp = root;
+    if(root==NULL){
+        return -1;
+    }
+    while(temp!=NULL){
+        temp = temp->right;
+    }
+    return temp->data;
+}
+
+int findMini(Node* root){
+    Node* temp = root;
+    if(root==NULL){
+        return -1;
+    }
+    while(temp!=NULL){
+        temp=temp->left;
+    }
+    return temp->data;
+}
 
 int main(){
 
