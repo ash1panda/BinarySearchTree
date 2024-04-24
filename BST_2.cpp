@@ -76,16 +76,21 @@ void levelOrderTraversal(Node* root){
 }
 
 void inOrderTraversal(Node* root){  // LNR  
-    Node* temp = root;
+    
+    if(root ==NULL){
+        return;
+    }
     
     //L
-    inOrderTraversal(temp->left);
+    inOrderTraversal(root->left);
     //N
-    cout << temp->data << " ";
+    cout << root->data << " ";
     //R
-    inOrderTraversal(temp->right);
+    inOrderTraversal(root->right);
 
 }
+
+void preOrderTraversal(Node * root)
 
 
 
