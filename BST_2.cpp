@@ -1,5 +1,9 @@
-
-
+/*
+1.) Create a BST (that also includes Insert node into BST)
+2.) Level Order Traversal
+3.) PostOrder, PreOrder, InOrder Traversals
+4.) Find a node in BST 
+*/
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -28,8 +32,6 @@ void insertIntree(Node* &root, int val){
     }
     else{
         insertIntree(root->right, val);
-
-
     }
 
     
@@ -71,6 +73,18 @@ void levelOrderTraversal(Node* root){
 
     }
     
+}
+
+void inOrderTraversal(Node* root){  // LNR  
+    Node* temp = root;
+    
+    //L
+    inOrderTraversal(temp->left);
+    //N
+    cout << temp->data << " ";
+    //R
+    inOrderTraversal(temp->right);
+
 }
 
 
