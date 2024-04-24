@@ -17,7 +17,7 @@ public:
 
 // Insert into BST
 void insertIntoBST(Node* &root, int data){
-    if(root == NULL){
+    if(root == NULL){            // Initially the root node will be null so we Have to equate the root node to the Very first value in the given series
         root = new Node(data);
         return;
     }
