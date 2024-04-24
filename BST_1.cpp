@@ -204,8 +204,8 @@ Node *deleteNodeInBST(Node *root, int target)
         // Case 4 : Both child exists
         else
         {
-            int maxi = findMax(root->left);  // Left Subtree ka max lelo (Left subtree mein jaao fir right-right jaate rho), ya right subtree ka min lelo (right subtree jao aur left-left krte rho)
-            root->data = maxi;
+            int maxi = findMax(root->left);  // Left Subtree ka max ele lelo (Left subtree mein jaao fir right-right jaate rho), ya right subtree ka min lelo (right subtree jao aur left-left krte rho)
+            root->data = maxi;               // Node ko sudo delete kiya (Actual Delete nahi kiya bass value replace krdi)
             root->left = deleteNodeInBST(root->left, maxi);
             return root;
         }

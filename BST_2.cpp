@@ -138,7 +138,7 @@ int findMaxi(Node* root){
     if(root==NULL){
         return -1;
     }
-    while(temp!=NULL){
+    while(temp->right!=NULL){
         temp = temp->right;
     }
     return temp->data;
@@ -149,19 +149,103 @@ int findMini(Node* root){
     if(root==NULL){
         return -1;
     }
-    while(temp!=NULL){
+    while(temp->left!=NULL){
         temp=temp->left;
     }
     return temp->data;
 }
 
+Node* deleteNode(Node* root, int target) {
 
+    //Base Case 
+    if (root == NULL) {
+        return NULL;
+    }
+
+    if (root->data == target) { // We have to do main operations for this case only
+
+        // if the node is "Leaf Node"
+        if (root->left == NULL && root->right == NULL) {
+            delete root;
+            return NULL;
+        }
+
+        // if right subtree exists
+        else if (root->left == NULL && root->right != NULL) {
+            Node* child = root->right;
+            delete root;
+            return child;
+        }
+
+        // if left subtree exists
+        else if (root->right == NULL && root->left != NULL) {
+            Node* child = root->left;
+            delete root;
+            return child;
+        }
+
+        // if both left and right subtrees exist 
+        else if (root->right != NULL && root->left != NULL) {
+            // find maximum element from the left subtree
+            int maxiLeft = findMaxi(root->left); // Change findMini to findMaxi
+            root->data = maxiLeft;
+            root->left = deleteNode(root->left, maxiLeft);
+            return root;
+        }
+
+    }
+    else if (root->data > target) {
+        // target is in left 
+        root->left = deleteNode(root->left, target);
+    }
+    else {
+        // target is in right
+        root->right = deleteNode(root->right, target);
+    }
+    return root;
+}
+// 50 30 60 25 40 70 80 55 -1
 
 int main(){
 
     Node* root = NULL;
     createBST(root);
+    cout << endl << endl << "This the Level Order Traversal: "<<endl;
     levelOrderTraversal(root);
+    cout << endl << endl << "This is InOrder Traversal: ";
+    inOrderTraversal(root);
+    cout << endl << endl << "This is preOrder Traversal: ";
+    preOrderTraversal(root);
+    cout << endl << endl << "This is postOrder Traversal: ";
+    postOrderTraversal(root);
+
+    int node1;
+    cout << endl << endl << "Enter the node to find: ";
+    cin >> node1;
+    if (searchNode(root, node1)==1){
+        cout << "Node Found !";
+    }
+    else{
+        cout << "Node Not Found !";
+    }
+
+    cout << endl << endl << "Maximum Element of the BST is: " << findMaxi(root);
+    cout << endl << endl << "Minimum Element of the BST is: " << findMini(root);
+
+    int node2;
+    while(node2!=-1){
+    cout << endl << endl << "Enter the node to delete (Enter -1 to end): ";
+    cin >> node2;
+    cout << endl << endl << "This the Level Order Traversal (Before Deletion): "<<endl;
+    levelOrderTraversal(root);
+    deleteNode(root, node2);
+    cout << endl << "This the Level Order Traversal (After Deletion): "<<endl;
+    levelOrderTraversal(root);
+    }
+
+    
+
+    
 
     
 
